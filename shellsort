@@ -1,0 +1,69 @@
+package shellsort;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author FANNY
+ */
+public class Listas {
+    
+  private static void metodoShellsort(List<Integer> lista)
+    {
+        int division = lista.size()/2, aux, salto, i, a, b;
+        for(salto = division; salto !=0; salto/=2)
+        {
+            boolean cambio = true;
+            while(cambio)
+            {
+                cambio = false;
+                for(i = salto; i < lista.size(); i++)
+                {
+                    if(lista.get(i-salto) > lista.get(i))
+                    {
+                        aux = lista.get(i);
+                        a = lista.get(i-salto);
+                        lista.set(i, a);
+                        lista.set(i-salto, aux);
+                        cambio = true;
+                        //System.out.println(lista.get(i)+"     "+lista.get(i-salto));
+                    }
+                }
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        List<Integer> lista = new ArrayList<Integer>();
+        lista.add(24);
+        lista.add(1);
+        lista.add(5);
+        lista.add(8);
+        lista.add(2);
+        lista.add(6);
+        lista.add(3);
+        lista.add(7);
+        lista.add(4);
+        System.out.println("*********************");
+        System.out.println(" Arreglo desordenado");
+        System.out.println("*********************");
+        
+        for(int i=0; i < lista.size(); i++)
+        {
+            System.out.print(" " + lista.get(i));
+        }
+        
+        metodoShellsort(lista);
+        System.out.println("");
+        System.out.println("*********************");
+        System.out.println(" Arreglo Ordenado");
+        System.out.println("*********************");
+        for(int i=0; i < lista.size(); i++)
+        {
+            System.out.print(" " + lista.get(i));
+        }
+        System.out.println("");
+    } 
+}
+
